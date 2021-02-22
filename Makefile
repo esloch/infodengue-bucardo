@@ -7,7 +7,7 @@ include $(ENVFILE)
 export
 
 # Docker specific
-COMPOSE_FILE := docker/docker-compose.yml
+COMPOSE_FILE := docker/bucardo-compose.yml
 NETWORK := infodengue
 DOCKER := PYTHON_VERSION=$(PYTHON_VERSION) docker-compose -p $(NETWORK) -f $(COMPOSE_FILE) --env-file .env
 DOCKER_UP := $(DOCKER) up

@@ -10,8 +10,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      #- ./${DBDATA_DIR}/:Data
-      - "./Bucardo:/Bucardo"
-      - "./docker/pg_data/:/Data"
+       - ${DBDATA_DIR}/:/var/lib/postgresql/data
     expose:
       - 5432
