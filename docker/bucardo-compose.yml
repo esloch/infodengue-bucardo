@@ -13,3 +13,4 @@ services:
       - ${DBDATA_DIR}/pg_data/:/var/lib/postgresql/data
     restart:
       always
+

@@ -30,3 +30,4 @@ WORKDIR /Bucardo
 EXPOSE 5432
 
 # CMD [ "entrypoint.sh" ]
+
