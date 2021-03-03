@@ -13,6 +13,7 @@ RUN apt-get -qq update --yes \
 RUN mkdir -p /var/log/bucardo /var/run/bucardo \
 && chown -R postgres:postgres /var/log/bucardo /var/run/bucardo
 
+ADD docker/bucardo_setup/* /docker-entrypoint-initdb.d/
 
 ADD docker/.bucardorc /root/.bucardorc
 RUN wget http://bucardo.org/downloads/Bucardo-5.5.0.tar.gz\
