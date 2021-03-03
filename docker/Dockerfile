@@ -13,11 +13,20 @@ RUN apt-get -qq update --yes \
 RUN mkdir -p /var/log/bucardo /var/run/bucardo \
 && chown -R postgres:postgres /var/log/bucardo /var/run/bucardo
 
-ADD docker/postgres_setup/* /docker-entrypoint-initdb.d/
 
-#RUN mkdir /Bucardo
-#ADD docker/script.sh /Bucardo
-ADD docker/.bucardorc $HOME/.bucardorc
+ADD docker/.bucardorc /root/.bucardorc
+RUN wget http://bucardo.org/downloads/Bucardo-5.5.0.tar.gz\
+&& tar -xzvf Bucardo-5.5.0.tar.gz  \
+&& mv Bucardo-5.5.0 /Bucardo \
+&& cd /Bucardo \
+&& pwd \
+&& perl Makefile.PL \
+&& apt install make \
+&& make \
+&& make install
+
 WORKDIR /Bucardo
 
 EXPOSE 5432
+
+# CMD [ "entrypoint.sh" ]
